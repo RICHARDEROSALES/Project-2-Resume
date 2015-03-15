@@ -125,9 +125,14 @@ function initializeMap() {
     // initializes an empty array
     var locations = [];
 
-    // adds the single location property from bio to the locations array
-    locations.push(bio.contacts.location);
     
+    // adds the single location property from bio to the locations array
+    for (var biograph in bio.contacts){
+    locations.push(bio.contacts[biograph].location);
+    }
+
+
+
     // iterates through school locations and appends each location to
     // the locations array
     for (var school in education.schools) {
@@ -152,7 +157,7 @@ function initializeMap() {
 
     // The next lines save location data from the search result object to local variables
     var lat = placeData.geometry.location.k;  // latitude from the place service
-    var lon = placeData.geometry.location.B;  // longitude from the place service
+    var lon = placeData.geometry.location.D;  // longitude from the place service
     var name = placeData.formatted_address;   // name of the place from the place service
     var bounds = window.mapBounds;            // current boundaries of the map window
 
